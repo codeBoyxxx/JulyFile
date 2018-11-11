@@ -55,7 +55,6 @@ Page({
    */
   onLoad: function(options) {
     var latest = classicModel.getLatest((res) => {
-      console.log(res)
       this.setData({
         classicData: res,
         likeCount: res.fav_nums,
