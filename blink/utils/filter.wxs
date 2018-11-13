@@ -1,0 +1,6 @@
+var format=function(text){
+  return '123123123'
+}
+module.exports = {
+  format: format
+}
