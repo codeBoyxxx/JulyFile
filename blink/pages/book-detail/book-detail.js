@@ -1,6 +1,8 @@
 // pages/book-detail/book-detail.js
 import { BookModel } from '../../models/book.js'
+import { LikeModel } from '../../models/like.js'
 let bookModel = new BookModel()
+let likeModel = new LikeModel()
 Page({
 
   /**
@@ -8,9 +10,10 @@ Page({
    */
   data: {
     comments:[],
-    detail:null,
+    book:null,
     likeStatus:false,
-    likeCount:0
+    likeCount:0,
+    posting:false
   },
 
   /**
@@ -41,7 +44,15 @@ Page({
       })
     })
   },
-
+  onLike: function (event){
+    var behavior = event.detail.behavior;
+    likeModel.like(behavior, this.data.book.id, 400)
+  },
+  onFakePost:function(){
+    this.setData({
+      posting:true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
